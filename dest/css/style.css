@@ -1,0 +1,173 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?6mzhok');
+  src:  url('../fonts/icomoon.eot?6mzhok#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?6mzhok') format('truetype'),
+    url('../fonts/icomoon.woff?6mzhok') format('woff'),
+    url('../fonts/icomoon.svg?6mzhok#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-valid:before {
+  content: "\e914";
+}
+.icon-add__answersheet:before {
+  content: "\e918";
+}
+.icon-add_b:before {
+  content: "\e919";
+}
+.icon-answer_sheet:before {
+  content: "\e91a";
+}
+.icon-copy:before {
+  content: "\e91b";
+}
+.icon-delete:before {
+  content: "\e91c";
+}
+.icon-download:before {
+  content: "\e91d";
+}
+.icon-edit_answersheet:before {
+  content: "\e91e";
+}
+.icon-edit:before {
+  content: "\e91f";
+}
+.icon-exam_p_icon:before {
+  content: "\e920";
+}
+.icon-invalid:before {
+  content: "\e921";
+}
+.icon-lead_in:before {
+  content: "\e922";
+}
+.icon-opt:before {
+  content: "\e923";
+}
+.icon-paper_icon:before {
+  content: "\e924";
+}
+.icon-pdf:before {
+  content: "\e925";
+}
+.icon-print:before {
+  content: "\e926";
+}
+.icon-publish:before {
+  content: "\e927";
+}
+.icon-reduce__answersheet:before {
+  content: "\e928";
+}
+.icon-reset:before {
+  content: "\e929";
+}
+.icon-save:before {
+  content: "\e92a";
+}
+.icon-show_line__answersheet:before {
+  content: "\e92b";
+}
+.icon-title_number:before {
+  content: "\e92c";
+}
+.icon-transfer:before {
+  content: "\e92d";
+}
+.icon-value:before {
+  content: "\e92e";
+}
+.icon-view:before {
+  content: "\e92f";
+}
+.icon-knowledgepoint_mark:before {
+  content: "\e930";
+}
+.icon-articlelength:before {
+  content: "\e909";
+}
+.icon-articletype:before {
+  content: "\e90e";
+}
+.icon-match:before {
+  content: "\e913";
+}
+.icon-add:before {
+  content: "\e900";
+}
+.icon-check_mark:before {
+  content: "\e902";
+}
+.icon-close:before {
+  content: "\e903";
+}
+.icon-direction_left:before {
+  content: "\e904";
+}
+.icon-direction_right:before {
+  content: "\e905";
+}
+.icon-down:before {
+  content: "\e906";
+}
+.icon-exclamation_mark:before {
+  content: "\e907";
+}
+.icon-analyze:before {
+  content: "\e908";
+}
+.icon-answer:before {
+  content: "\e917";
+}
+.icon-content:before {
+  content: "\e90a";
+}
+.icon-degree:before {
+  content: "\e90b";
+}
+.icon-knowledge_point:before {
+  content: "\e90c";
+}
+.icon-sel:before {
+  content: "\e90d";
+}
+.icon-source:before {
+  content: "\e915";
+}
+.icon-tab:before {
+  content: "\e90f";
+}
+.icon-question:before {
+  content: "\e910";
+}
+.icon-subtraction:before {
+  content: "\e911";
+}
+.icon-up:before {
+  content: "\e912";
+}
+.icon-warn:before {
+  content: "\e901";
+}
+.icon-zoom:before {
+  content: "\e916";
+}

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--head-->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+<meta name="apple-mobile-web-app-capable" content="no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" href="../css/bootstrap-select.min.css"/>
+<link rel="stylesheet" href="../css/global.css"/>
+    <title>用户权限管理</title>
+</head>
+<body>
+    <header class="count_header">
+    <div class="container">
+        <a href="./" class="logo">
+            <img src="../images/logo.png" title="原石教育"/>
+        </a>
+        <ul class="top_nav">
+            <li><a href="index.html">资源库管理</a></li>
+            <li><a href="javascript:;">校本库管理</a></li>
+            <li><a href="#" class="active">用户权限管理</a></li>
+            <li><a href="javascript:;">系统设置</a></li>
+        </ul>
+        <div class="vip_info">
+            <div class="module-vip">
+                <span class="vip_level">学科管理员</span>
+                <span class="vip-man">赵老师</span>
+            </div>
+            <a href="#"><img src="../images/man.png"/></a>
+        </div>
+    </div>
+</header>
+    <div class="module-search">
+        <div class="container">
+            <div class="menu-top">
+                <div class="menu-crumbs">
+                    <a href="javascript:;">用户权限管理</a>
+                </div>
+                <a href="javascript:;" class="btn data-export" id="add-user">新增用户</a>
+            </div>
+            <div class="search">
+                <div class="search-role form-select">
+                    <select class="selectpicker">
+                        <option>全部角色</option>
+                    </select>
+                </div>
+                <div class="search-subject form-select">
+                    <select class="selectpicker">
+                        <option>全部学科</option>
+                    </select>
+                </div>
+                <div class="search-status form-select">
+                    <select class="selectpicker">
+                        <option>全部状态</option>
+                    </select>
+                </div>
+                <div class="search-data">
+                    <input type="text" placeholder="输入关键词" class="search-key"/>
+                    <button class="search-btn"><i class="icon-zoom"></i>查询</button>
+                    <a href="javascript:;" class="clear-btn">清除筛选</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container table-main">
+        <table class="table moudule-table">
+            <tr>
+                <th>编号</th>
+                <th>用户ID</th>
+                <th>用户姓名</th>
+                <th>角色类别</th>
+                <th>学科</th>
+                <th>当前状态</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub" title="重置密码">重置密码</a>
+                    <a href="javascript:;" class="edit-sub" title="编辑用户">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub" title="删除">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>xxxyyyzzz</td>
+                <td>周琼</td>
+                <td>学科管理员</td>
+                <td>数学</td>
+                <td>有效</td>
+                <td class="confirm_btn">
+                    <a href="javascript:;" class="reset-sub">重置密码</a>
+                    <a href="javascript:;" class="edit-sub">编辑用户</a>
+                    <a href="javascript:;" class="delete-sub">删除</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="foot-main">
+        <div class="container">
+            <div class="page">
+                <div class="result">
+                    当前结果:<span class="result-num">26</span>条记录
+                </div>
+                <div class="showNum">
+                    <span>每页显示</span>
+                    <div class="show-input">
+                        <input type="num" value="4">
+                        <span class="page-icon">
+                                    <span class="borderB"><i class="icon-page-up"></i></span>
+                                    <span><i class="icon-page-down"></i></span>
+                                </span>
+                    </div>
+                    <span>条</span>
+                </div>
+                <ul class="pageNum">
+                    <li><a href="javascript:;" class="first">首页</a></li>
+                    <li><a href="javascript:;" class="prev"><img src="../images/icon/prev.png"></a></li>
+                    <li><a href="javascript:;">1</a></li>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;" class="next"><img src="../images/icon/next.png"></a></li>
+                    <li><a href="javascript:;" class="last">尾页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="layer-data">
+            <div class="add-status">
+                <div class="search-role form-select">
+                    <select class="selectpicker">
+                        <option>全部角色</option>
+                    </select>
+                </div>
+                <div class="search-subject form-select">
+                    <select class="selectpicker">
+                        <option>全部学科</option>
+                    </select>
+                </div>
+                <div class="search-status form-select">
+                    <select class="selectpicker">
+                        <option>全部状态</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>用户ID:</label>
+                <input type="text" placeholder="根据用户角色和学科自动生成,不可编辑"/>
+                <span>默认密码: YSJY23</span>
+            </div>
+            <div class="form-group">
+                <label>姓名:</label>
+                <input type="text" placeholder="请输入姓名..."/>
+            </div>
+            <div class="form-group">
+                <label>性别:</label>
+                <select class="selectpicker">
+                    <option>男</option>
+                    <option>女</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- javascript -->
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/bootstrap-select.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/vue-resource.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+</html>

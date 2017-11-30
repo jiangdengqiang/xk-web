@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--head-->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+<meta name="apple-mobile-web-app-capable" content="no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" href="../css/bootstrap-select.min.css"/>
+<link rel="stylesheet" href="../css/global.css"/>
+    <title>题目录入</title>
+</head>
+<body>
+    <header class="entry-top" id="header_main">
+    <div class="container">
+        <ul class="module-crumbs">
+            <li><a href="./">资源库管理</a>></li>
+            <li><a href="javascript:;">题目管理</a>></li>
+            <li><a href="javascript:;">题目录入</a>></li>
+            <li><span href="javascript:;" v-html="crumbs"></span></li>
+        </ul>
+        <a href="javascript:;" class="page-back" onclick="window.history.back()">返回</a>
+    </div>
+</header>
+    <div id="entry_wrap">
+        <section class="module-menu">
+            <div class="container">
+                <div class="subnav">
+                    <h2>题号
+                        <span class="tag" v-text="topicNum" v-if="topicNum!=null"></span>
+                        <span class="tag" v-text="countNum+1" v-else></span>
+                    </h2>
+                    <div v-if="subject!='english'">
+                        <ul class="beta-btn topic-type">
+                            <li v-for="(responseFormats,index) in responseFormat" @click="addStatus($event)" v-bind:class="{active:index==0}" :data-name="responseFormats.name"><span v-text="responseFormats.title"></span></li>
+                        </ul>
+                        <ul class="beta-btn topic-class">
+                            <li v-for="sourceKinds in sourceKind" @click="addStatus($event)" :data-name="sourceKinds.name"><span v-text="sourceKinds.title"></span></li>
+                        </ul>
+                        <ul class="topic-test" v-show="sourceShow">
+                            <li>
+                                <select class="selectpicker" id="subYear" data-size="10">
+                                    <option value="0">请选择时间</option>
+                                    <option v-for="sourceTimes in sourceTime" v-text="sourceTimes.title" :value="sourceTimes.name"></option>
+                                </select>
+                            </li>
+                            <li v-show="subAreaShow">
+                                <select class="selectpicker" id="subArea" data-size="10">
+                                    <option value="0">请选择区域</option>
+                                    <option v-for="sourceAreas in sourceArea" v-text="sourceAreas.title" :value="sourceAreas.name"></option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div v-else class="enSource">
+                        <span v-if="volumeCn=='高考'" class="volumeTxt">高考真题</span>
+                        <span v-if="volumeCn=='高一'||volumeCn=='高二'" class="volumeTxt">同步训练</span>
+                        <span v-if="volumeCn=='高三'" class="volumeTxt">复习模拟</span>
+                        <ul class="topic-test">
+                            <li>
+                                <select class="selectpicker" id="subYear" data-size="10">
+                                    <option value="0">请选择时间</option>
+                                    <option v-for="sourceTimes in sourceTime" v-text="sourceTimes.title" :value="sourceTimes.name"></option>
+                                </select>
+                            </li>
+                            <li v-if="volumeCn!='高三'">
+                                <select class="selectpicker" id="subArea" data-size="10">
+                                    <option value="0">请选择区域</option>
+                                    <option v-for="sourceAreas in sourceArea" v-text="sourceAreas.title" :value="sourceAreas.name"></option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <div class="entry-edit" :data-attr="wrapStyle">
+                <div class="edit-list">
+                    <div class="mark-topic">
+                        <div class="mark-icon">
+                            <i class="icon-icon_content"></i>
+                            <span>题目内容</span>
+                        </div>
+                        <div class="common-tool">
+                            <span>设置小题:</span>
+                            <div class="btn-num">
+                                <span class="add" @click="addNum($event)"><i class="icon-add narrow"></i></span>
+                                <input type="text" :value="topicLength" readonly class="dec-num dec_option" minlength="0"/>
+                                <span class="sub" @click="subNum($event)"><i class="icon-subtraction narrow"></i></span>
+                            </div>
+                        </div>
+                        <div class="common-tool">
+                            <span>设置题目选项:</span>
+                            <div class="btn-num">
+                                <span class="add" @click="addNumCheck($event)"><i class="icon-add narrow"></i></span>
+                                <input type="text" :value="checkLength" readonly class="dec-num" minlength="4"/>
+                                <span class="sub" @click="subNumCheck($event)"><i class="icon-subtraction narrow"></i></span>
+                            </div>
+                        </div>
+                        <div class="common-tool">
+                            <button id="btn-repeat">题目查重</button>
+                        </div>
+                    </div>
+                    <textarea name="ckeditor1" id="ckeditor1" rows="10" cols="40"></textarea>
+                    <div class="topic-result choice">
+                        <div class="result-list" v-for="(startTopic,index) in startTopicNum">
+                            <span v-if="topicLength>0">第<span v-text="(index+1)"></span>小题答案:</span>
+                            <span v-else>题目答案设置</span>
+                            <ul class="check-result">
+                                <li @click="optionStatus($event)" v-for="option in startTopic.topicCheck" :class="{'active':option.ishow}"><span v-text="option.text"></span></li>
+                            </ul>
+                            <span class="topic-close icon-close" v-if="topicLength>1" @click="subNum($event)"></span>
+                        </div>
+                    </div>
+                    <div class="topic-result fill_blank" style="display: none;">
+                        <div class="result-list" v-for="(fill,indexs) in fillLength">
+                            <span v-if="topicLength>1">第<span v-text="(indexs+1)"></span>小题包含空数:</span>
+                            <span v-else>题目包含空数</span>
+                            <div class="btn-num">
+                                <span class="add" @click="addFillNum($event)"><i class="icon-add narrow"></i></span>
+                                <input type="text" :value="fill" class="fill_num" readonly>
+                                <span class="sub" @click="SubFillNum($event)"><i class="icon-subtraction narrow"></i></span>
+                            </div>
+                            <span class="topic-close icon-close" @click="SubFillNum($event)" v-if="topicLength>1"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="edit-list" style="display: none" id="topic_result">
+                    <div class="mark-topic">
+                        <div class="mark-icon">
+                            <i class="icon-icon_analyze"></i>
+                            <span>题目答案</span>
+                        </div>
+                    </div>
+                    <textarea name="ckeditor2" id="ckeditor2" rows="10" cols="40"></textarea>
+                </div>
+                <div class="edit-list">
+                    <div class="mark-topic">
+                        <div class="mark-icon">
+                            <i class="icon-icon_analyze"></i>
+                            <span>题目解析</span>
+                        </div>
+                    </div>
+                    <textarea name="ckeditor3" id="ckeditor3" rows="10" cols="40"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="mark-save">
+            <button class="save-back" @click="entrySubmit($event)" :class="{editBtn:isEdit}">保存&返回</button>
+            <button class="save-next" @click="entrySubmit($event)" :class="{editNextBtn:isEdit}">保存&下一题</button>
+        </div>
+        <div class="hide">
+            <div class="layer-data">
+                <div class="menu-crumbs">
+                    <a href="javascript:;">数学 / 必修1 / 第二章 基础初等函数 (1) / 2.2 对数函数</a>
+                </div>
+                <div class="check-problem">
+                    <div class="check-list">
+                        <h2>题目内容</h2>
+                        <div class="check-content">
+                            <p>从5本不同的故事书和4本不同的数学书中选出4本，送给4位同学，每人1本， 问： </p>
+                            <p>(1)如果故事书和数学书各选2本，共有多少种不同的送法？</p>
+                            <p>(2)如果故事书甲和数学书乙必须送出，共有多少种不同的送法？</p>
+                            <p>(3)如果选出的4本书中至少有3本故事书，共有多少种不同的送法？</p>
+                        </div>
+                    </div>
+                    <div class="check-list">
+                        <h2>题目答案</h2>
+                        <div class="check-content">
+                            B
+                        </div>
+                    </div>
+                    <div class="check-list">
+                        <h2>题目解析</h2>
+                        <div class="check-content">
+                            <p>系统抽样的分段间隔为500/50=10,在随机抽样中，首次抽到003号，以后每隔10个号抽到一个人，
+                                则分别是003、015、027、039构成以3为首项，10为公差的等差数列，故可分别求出在001到200中有20人，
+                                在201至355号中共有16人，则356到500中有14人。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- javascript -->
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/bootstrap-select.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/vue-resource.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+<script src='../js/top.js'></script>
+<script src='../js/entry.js'></script>
+<script>
+    $(function(){
+        include(config.CKEDITOR_HOST);
+        $(window).load(function(){
+            CKEDITOR.replace('ckeditor1', {
+                "uploadUrl":config.UPLOAD
+            });
+            CKEDITOR.replace('ckeditor2', {
+            });
+            CKEDITOR.replace('ckeditor3', {
+            });
+        })
+    })
+</script>
+</html>

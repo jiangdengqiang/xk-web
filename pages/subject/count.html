@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../templates/layouts/head.html" %}
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css"/>
+    <title>资源库统计</title>
+</head>
+<body>
+    <!--<header class="count_header">
+        <div class="container">
+        <a href="#" class="logo">
+            <img src="../images/logo.png" title="原石教育"/>
+        </a>
+        <nav class="top_nav">
+            <a href="javascript:;" class="active">资源库管理</a>
+            <a href="javascript:;">校本库管理</a>
+            <a href="javascript:;">用户权限管理</a>
+            <a href="javascript:;">系统设置</a>
+        </nav>
+        <div class="vip_info">
+            <div class="module-vip">
+                <span class="vip_level">学科管理员</span>
+                <span class="vip-man">赵老师</span>
+            </div>
+            <a href="#"><img src="../images/man.png"/></a>
+        </div>
+    </div>
+    </header>-->
+    <header id="header">
+        <div class="container">
+            <a href="./" class="logo">
+                <img src="../images/logo.png" title="原石教育"/>
+            </a>
+            <ul class="top_nav">
+                <li>
+                    <a href="javascript:;" class="active" v-if="userName=='xk_admin'|| userName=='xk_subadmin'">资源库管理</a>
+                    <a href="javascript:;" class="active" v-else>题目管理</a>
+                    <div class="submenu" v-if="userMenu">
+                        <ul>
+                            <li><a href="#">题目管理</a></li>
+                            <li><a href="#">资源库设计</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li  v-if="userName=='xk_admin'|| userName=='xk_subadmin'"><a href="javascript:;">校本库管理</a></li>
+                <li v-if="userMenu"><a href="./user_manage.html">用户权限管理</a></li>
+                <li><a href="javascript:;">个人设置</a></li>
+            </ul>
+            <div class="vip_info" v-bind:class="userName">
+                <div class="module-vip">
+                    <span class="vip_level" v-text="userRole.description"></span>
+                    <span class="vip-man" v-text="userRole.username"></span>
+                </div>
+                <div class="userImg">
+                    <a href="#">
+                        <img src="../images/man.png"/>
+                    </a>
+                    <div class="submenu">
+                        <ul>
+                            <li><a href="../login/login.html" @click="clearLocalStorage()">撤销用户</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="countTable">
+        <div class="module-search">
+            <div class="container">
+                <div class="menu-top">
+                    <div class="menu-crumbs">
+                        <a href="javascript:;">资源库管理></a>
+                        <a href="javascript:;">资源库设计</a>
+                    </div>
+                    <button class="btn data-export">数据导出</button>
+                </div>
+                <div class="search">
+                    <div class="search-subject form-select">
+                        <select class="selectpicker" id="allsubject">
+                            <option value="0">全部学科</option>
+                            <option v-for="subject in allSubject" v-text="subject.title" :value="subject.name"></option>
+                        </select>
+                    </div>
+                    <div class="search-role form-select">
+                        <select class="selectpicker" id="role">
+                            <option value="0">全部角色</option>
+                            <option v-for="role in roleAll" v-text="role.title" :value="role.name"></option>
+                        </select>
+                    </div>
+                    <div class="search-time">
+                        <span class="search-txt">时间范围:</span>
+                        <input type="text" value="" class="start-time datetimepicker" placeholder="起始日期" readonly/>
+                        <span class="tips">～</span>
+                        <input type="text" value="" class="end-time datetimepicker"  placeholder="终止日期" readonly/>
+                    </div>
+                    <div class="search-data">
+                        <!--<input type="text" placeholder="输入关键词" class="search-key"/>-->
+                        <button class="search-btn" @click="searchBtn($event)"><i class="icon-zoom"></i>查询</button>
+                        <a href="javascript:;" class="clear-btn" @click="clearFilter($event)">清除筛选</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container table-main">
+            <table class="table moudule-table" v-if="allTableData.length>0">
+                <tr>
+                    <th>编号</th>
+                    <th>学科</th>
+                    <th>角色类别</th>
+                    <th>用户姓名</th>
+                    <th>用户ID</th>
+                    <th>录题数量</th>
+                    <th>打标数量</th>
+                    <th>审核数量</th>
+                    <th>题目所属章目录(点击可快速跳转)</th>
+                </tr>
+                <tr v-for="(people,index) in allTableData">
+                    <td v-text="index+1"></td>
+                    <td v-text="allSubArray[people.user.discipline].name"></td>
+                    <td v-text="people.user.primaryTitle"></td>
+                    <td v-text="people.user.name"></td>
+                    <td v-text="people.user.id"></td>
+                    <td class="bluecolor" v-text="people.typewritedCount">123</td>
+                    <td class="yellowcolor" v-text="people.taggedCount">122</td>
+                    <td class="redcolor" v-text="people.checkedCount">68</td>
+                    <td class="select-data" v-if="people.partitions.length>0">
+                        <select class="selectpicker" @change="chooseMedicine($event)" data-size="10">
+                            <option v-for="sub_charpter in people.partitions"v-text="sub_charpter.botn.botntitle"></option>
+                        </select>
+                    </td>
+                    <td v-else>暂无数据</td>
+                </tr>
+            </table>
+            <div class="empty" v-else><img src="../images/search_empty.png"> <p>暂无搜索到您想要的数据，好尴尬啊！~</p></div>
+        </div>
+        <div class="foot-main">
+            <div class="container">
+                <div class="page">
+                    <div class="result">
+                        当前结果:<span class="result-num">26</span>条记录
+                    </div>
+                    <div class="showNum">
+                        <span>每页显示</span>
+                        <div class="show-input">
+                            <input type="num" value="4">
+                            <span class="page-icon">
+                                        <span class="borderB"><i class="icon-page-up"></i></span>
+                                        <span><i class="icon-page-down"></i></span>
+                                    </span>
+                        </div>
+                        <span>条</span>
+                    </div>
+                    <ul class="pageNum">
+                        <li><a href="javascript:;" class="first">首页</a></li>
+                        <li><a href="javascript:;" class="prev"><img src="../images/icon/prev.png"></a></li>
+                        <li><a href="javascript:;">1</a></li>
+                        <li><a href="javascript:;">2</a></li>
+                        <li><a href="javascript:;" class="next"><img src="../images/icon/next.png"></a></li>
+                        <li><a href="javascript:;" class="last">尾页</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% include "../templates/partials/js.html" %}
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/header.js"></script>
+<script src="../js/count.js"></script>
+</html>

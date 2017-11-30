@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../templates/layouts/head.html" %}
+    <link rel="stylesheet" type="text/css" href="../css/zTreeStyle/zTreeStyle.css"/>
+    <title>数学/必修/第二章 基本初等函数(I)/2.2对数函数</title>
+</head>
+<body>
+{% include "../templates/layouts/top.html" %}
+    <div id="markMain">
+        <div class="container mb100 main" >
+            <div class="row">
+                <div class="col-md-4 mark-left" id="mark-left">
+                    <div class="mark-left-title">
+                        <h2>题号:<span class="quest-num" v-text="topicNum"></span></h2>
+                        <a id="update-btn" :href="'../entry/Entry.html?id='+markTopicData._id+'&num='+topicNum+'&edit=true'">修改</a>
+                    </div>
+                    <div class="mark-list">
+                        <div class="mark-topic">
+                            <i class="icon-icon_content"></i>
+                            <span>题目内容</span>
+                        </div>
+                        <div class="mark-content" v-html="markTopicData.contOfQuery"></div>
+                    </div>
+                    <div class="mark-list">
+                        <div class="mark-topic">
+                            <i class="icon-icon_answer"></i>
+                            <span>题目答案</span>
+                        </div>
+                        <div class="mark-content">
+                            <p v-html="markTopicData.contOfKey">
+                                <span v-html="markTopicData.contOfKey" v-if="markTopicData.contOfKey!=''"></span>
+                                <!--<span v-else v-for="(moreResult,index) in markTopicData.sonOfAttr.contOfKey" v-html="(index+1)+':'+moreResult+';\t'"></span>-->
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mark-list">
+                        <div class="mark-topic">
+                            <i class="icon-icon_analyze"></i>
+                            <span>题目解析</span>
+                        </div>
+                        <div class="mark-content" v-html="markTopicData.contOfAnalysis"></div>
+                    </div>
+                    <div class="mark-list">
+                        <div class="mark-topic">
+                            <i class="icon-icon_source"></i>
+                            <span>题目标签</span>
+                        </div>
+                        <div class="mark-content mark-source">
+                            <a href="javascript:;" v-text="markTopicData.koSource" v-if="markTopicData.koSource!=''">高考真题</a>
+                            <a href="javascript:;" v-text="markTopicData.sourceTime" v-if="markTopicData.sourceTime!=''">2014年</a>
+                            <a href="javascript:;" v-text="markTopicData.sourceLoca" v-if="markTopicData.sourceLoca!=''">全国1卷</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="mark-right">
+                        <div class="mark-right-title">
+                            <h2><i class="icon-icon_tab"></i>题目打标</h2>
+                        </div>
+                        <div class="mark-right-label">
+                            <div v-if="isLabel" class="title-label">
+                                <div class="mark-topic" v-for="labelArrays in labelArray">
+                                    <i class="icon-icon_articletype"></i>
+                                    <span v-text="titleLabel[labelArrays.type.name].name"></span>
+                                    <i class="icon-question"></i>
+                                    <ul class="mark-rating" id="tag-rating">
+                                        <li @click="labelStatus($event)" v-for="labels in labelArrays.type.literal" :data-name="labels.name"><a href="javascript:;" v-text="labels.title"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mark-data-type">
+                                <div class="mark-topic">
+                                    <i class="icon-icon_knowledge_point"></i>
+                                    <span>知识点标签</span>
+                                    <ul class="mark-rating" id="marking-section" v-if="parseInt(mark.sonCount)>=2">
+                                        <li v-for="(sonNames,indexs) in mark.son" @click="sonNameStatus($event)" :class="{active:indexs==0}" :data-id="sonNames">
+                                            <a href="javascript:;">
+                                                <span class="marking-section-txt" v-text="topicNum+'.'+(indexs+1)"></span>
+                                                <span class="sign"><i class="icon-exclamation_mark narrow"></i></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mark-chapter">
+                                    <ul class="mark-chapter-list ztree" id="ztree"></ul>
+                                </div>
+                                <div class="mark-topic">
+                                    <i class="icon-icon_sel"></i>
+                                    <span>已选知识点</span>
+                                </div>
+                                <div class="module-group">
+                                    <ul class="mark-group-data">
+                                        <!--<li v-for="topicMarks in topicMark">
+                                        <span class="mark-group-num" v-text="topicMarks.title"></span>
+                                        <span class="mark-group-txt" v-text="topicMarks.name"></span>
+                                        <i class="icon-close" @click="closeTree($event)"></i>
+                                        </li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mark-save">
+            <button class="save-back" v-on:click="markSubmits($event)" href="javascript:;">保存&返回</button>
+            <button class="save-next" v-on:click="markSubmits($event)" href="javascript:;">保存&下一题</button>
+        </div>
+    </div>
+</body>
+{% include "../templates/partials/js.html" %}
+<script src='../js/top.js'></script>
+<script src="../js/jquery.ztree.core.js"></script>
+<script src="../js/jquery.ztree.excheck.js"></script>
+<script src="../js/markTreeData.js"></script>
+<script type="text/javascript" async  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</html>

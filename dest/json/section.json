@@ -1,0 +1,72 @@
+{
+  "items": [
+    {
+      "koLyro": "section",
+      "title": "1.1 ",
+      "koLyri": "just",
+      "edition": "std-17",
+      "_id": "59e031157dc94b11d70228e4",
+      "name": "1.1",
+      "dad": "59e031157dc94b11d70228e2",
+      "description": ""
+    },
+    {
+      "koLyro": "section",
+      "title": "1.2 ",
+      "koLyri": "just",
+      "edition": "std-17",
+      "_id": "59e031157dc94b11d70228e5",
+      "name": "1.2",
+      "dad": "59e031157dc94b11d70228e2",
+      "description": ""
+    },
+    {
+      "son": [
+        "59e031157dc94b11d70228e4",
+        "59e031157dc94b11d70228e5"
+      ],
+      "koLyro": "chapter",
+      "title": "第一章 ",
+      "koLyri": "just",
+      "edition": "std-17",
+      "_id": "59e031157dc94b11d70228e2",
+      "name": "chapter1",
+      "dad": "59e031157dc94b11d70228e0",
+      "description": ""
+    },
+    {
+      "koLyro": "section",
+      "title": "2.1 ",
+      "koLyri": "just",
+      "edition": "std-17",
+      "_id": "59e031157dc94b11d70228e6",
+      "name": "2.1",
+      "dad": "59e031157dc94b11d70228e3",
+      "description": ""
+    },
+    {
+      "koLyro": "section",
+      "title": "2.2 ",
+      "koLyri": "just",
+      "edition": "std-17",
+      "_id": "59e031157dc94b11d70228e7",
+      "name": "2.2",
+      "dad": "59e031157dc94b11d70228e3",
+      "description": ""
+    },
+    {
+      "son": [
+        "59e031157dc94b11d70228e6",
+        "59e031157dc94b11d70228e7"
+      ],
+      "koLyro": "chapter",
+      "title": "第二章 ",
+      "koLyri": "just",
+      "edition": "std-17",
+      "_id": "59e031157dc94b11d70228e3",
+      "name": "chapter2",
+      "dad": "59e031157dc94b11d70228e0",
+      "description": ""
+    }
+  ]
+}

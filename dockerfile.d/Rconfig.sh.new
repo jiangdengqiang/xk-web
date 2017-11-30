@@ -1,0 +1,8 @@
+sed -i "s/\"XK_MS_HOST\":\(.*\)/\"XK_MS_HOST\":\"$LDB_HOST\",/;
+        s/\"XK_MS_PORT\":\(.*\)/\"XK_MS_PORT\":\"$LDB_PORT\",/;
+        s;\"CKEDITOR_HOST\":\(.*\);\"CKEDITOR_HOST\":\"$LDB_HOST\";
+" /srv/www/xk-web/js/config.js
+
+sed -i "s/ldbhost:ldbport/$LDB_HOST:$LDB_PORT/" /etc/nginx/conf.d/xk-web.conf
+
+nginx -g "daemon off;"

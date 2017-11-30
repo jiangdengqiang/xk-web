@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../templates/layouts/head.html" %}
+    <title>题目录入</title>
+</head>
+<body>
+    <header class="entry-top">
+        <div class="container">
+            <ul class="module-crumbs">
+                <li><a href="javascript:;">资源库管理</a>></li>
+                <li><a href="javascript:;">题目管理</a>></li>
+                <li><a href="javascript:;">题目录入</a>></li>
+                <li><span href="javascript:;">英语/信息匹配</span></li>
+            </ul>
+            <a href="../subject" class="page-back">返回</a>
+        </div>
+    </header>
+    <section class="module-menu">
+        <div class="container">
+            <div class="subnav">
+                <h2>题号<span class="tag">14</span></h2>
+                <ul class="topic-test">
+                    <li>
+                        <select class="selectpicker">
+                            <option>2017</option>
+                            <option>2016</option>
+                            <option>2015</option>
+                            <option>2014</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select class="selectpicker">
+                            <option>全国1卷</option>
+                            <option>全国2卷</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="entry-edit">
+            <div class="edit-list">
+                <div class="mark-topic">
+                    <div class="mark-icon">
+                        <i class="icon-icon_content"></i>
+                        <span>题目内容</span>
+                    </div>
+                    <div class="common-tool">
+                        <span>设置小题:</span>
+                        <div class="btn-num">
+                            <span class="add"><i class="icon-add narrow"></i></span>
+                            <input type="text" value="2" readonly/>
+                            <span class="sub"><i class="icon-subtraction narrow"></i></span>
+                        </div>
+                    </div>
+                    <div class="common-tool">
+                        <span>设置题目选项:</span>
+                        <div class="btn-num">
+                            <span class="add"><i class="icon-add narrow"></i></span>
+                            <input type="text" value="4" readonly/>
+                            <span class="sub"><i class="icon-subtraction narrow"></i></span>
+                        </div>
+                    </div>
+                    <div class="common-tool">
+                        <button id="btn-repeat">题目查重</button>
+                    </div>
+                </div>
+                <textarea name="ckeditor1" id="ckeditor1" rows="10" cols="40"></textarea>
+                <div class="topic-result">
+                    <div class="result-list">
+                        <span>第1小题答案:</span>
+                        <ul class="check-result">
+                            <li class="active"><span>A</span></li>
+                            <li><span>B</span></li>
+                            <li><span>C</span></li>
+                            <li><span>D</span></li>
+                        </ul>
+                        <span class="topic-close icon-close"></span>
+                    </div>
+                    <div class="result-list">
+                        <span>第2小题答案:</span>
+                        <ul class="check-result">
+                            <li><span>A</span></li>
+                            <li><span>B</span></li>
+                            <li><span>C</span></li>
+                            <li><span>D</span></li>
+                        </ul>
+                        <span class="topic-close icon-close"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-list">
+                <div class="mark-topic">
+                    <div class="mark-icon">
+                        <i class="icon-icon_analyze"></i>
+                        <span>题目解析</span>
+                    </div>
+                </div>
+                <textarea name="ckeditor3" id="ckeditor3" rows="10" cols="40"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="mark-save">
+        <button class="save-back">保存&返回</button>
+        <button class="save-next">保存&下一题</button>
+    </div>
+</body>
+<script src='../js/ckeditor/ckeditor.js'></script>
+{% include "../templates/partials/js.html" %}
+<script>
+    $(function(){
+        CKEDITOR.replace('ckeditor1', {
+        });
+        CKEDITOR.replace('ckeditor3', {
+        });
+    })
+</script>
+</html>

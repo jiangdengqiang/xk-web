@@ -1,0 +1,51 @@
+$sideL:left;
+$sideR:right;
+$fontSize:100%;
+$mainColor:#00174b;
+$whiteColor:#fff;
+$grayfColor:#f6f6f7;
+$borderColor:#CCD3DE;
+$backGroundColor:#2AA7DC;
+$blackColor:#4a4a4a;
+$blueColor:#2AA9DF;
+$yellowColor:#F5A623;
+$redColor:#F52323;
+
+@mixin mainModule {
+  border: $borderColor solid 1px;
+  padding:15px;
+  border-radius:5px;
+}
+@mixin publicBtn($tb,$rl){
+  display: block;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #CCD3DE;
+  padding:$tb $rl;
+  cursor: pointer;
+  &:hover{
+    color:$whiteColor;
+    background-color: #9CE2FF;
+    border: 1px solid #4DA1FF;
+  }
+}
+@mixin autoWarp {overflow-wrap: break-word; word-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; -moz-hyphens: auto; hyphens: auto;}
+@mixin borderRadius($radius) { border-radius: $radius;-moz-border-radius: $radius;-webkit-border-radius: $radius;}
+@mixin boxTransform($value) {transform:rotate($value); -ms-transform:rotate($value); -moz-transform:rotate($value); -webkit-transform:rotate($value); -o-transform:rotate($value);}
+
+@mixin bgLinear($Yvalue,$Scolor,$Ecolor){
+  background: $Scolor;
+  background: -moz-linear-gradient($Yvalue,$Scolor,$Ecolor);
+  background: -webkit-gradient(linear,0 50%,100% 50%,from($Scolor),to($Ecolor));
+  background: -webkit-linear-gradient($Yvalue,$Scolor,$Ecolor);
+  background: -o-linear-gradient($Yvalue,$Scolor,$Ecolor);
+}
+@mixin textShadow($x,$y,$blur,$color) { text-shadow:$x $y $blur $color;}
+@mixin boxShadow($color,$x,$y,$blur,$type: false) {
+  @if ($type == true) {
+    box-shadow:$color $x $y $blur inset;-moz-box-shadow:$color $x $y $blur inset;-webkit-box-shadow:$color $x $y $blur inset;
+  }@else{
+    box-shadow:$color $x $y $blur;-moz-box-shadow:$color $x $y $blur;-webkit-box-shadow:$color $x $y $blur;
+  }
+}
+@mixin opacity($opacity) { opacity: $opacity; filter: alpha(opacity=$opacity*100);}

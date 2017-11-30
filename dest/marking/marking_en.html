@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--head-->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+<meta name="apple-mobile-web-app-capable" content="no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" href="../css/bootstrap-select.min.css"/>
+<link rel="stylesheet" href="../css/global.css"/>
+    <title>数学/必修/第二章 基本初等函数(I)/2.2对数函数</title>
+</head>
+<body>
+    <header class="mark-top">
+        <div class="container">
+            <ul class="module-crumbs">
+                <li><a href="javascript:;">资源库管理</a>></li>
+                <li><a href="javascript:;">题目管理</a>></li>
+                <li><a href="javascript:;">题目打标</a>></li>
+                <li><span href="javascript:;">数学/必修1/第二章 基本初等函数 (I)/2.2对数函数</span></li>
+            </ul>
+            <a href="../subject" class="page-back">返回</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mark-left">
+                <div class="mark-left-title">
+                    <h2>题号:<span class="quest-num">2</span></h2>
+                    <button id="update-btn">修改</button>
+                </div>
+                <div class="mark-list">
+                    <div class="mark-topic">
+                        <i class="icon-icon_content"></i>
+                        <span>题目内容</span>
+                    </div>
+                    <div class="mark-content">
+                        <p>从5本不同的故事书和4本不同的数学书中选出4本，送给4位同学，每人一本，问：</p>
+                        <p>(1)如果故事书和数学书各选两本，共有多少种不同的送法？</p>
+                        <p>(2)如果故事书甲和数学书乙必须送出，共有多少种不同的送法？</p>
+                        <p>(3)如果选出的4本书中至少有3本故事书，共有多少种不同的送法？</p>
+                    </div>
+                </div>
+                <div class="mark-list">
+                    <div class="mark-topic">
+                        <i class="icon-icon_answer"></i>
+                        <span>题目答案</span>
+                    </div>
+                    <div class="mark-content">
+                        <p>(1) 2 (2) 3 (3) 4</p>
+                    </div>
+                </div>
+                <div class="mark-list">
+                    <div class="mark-topic">
+                        <i class="icon-icon_analyze"></i>
+                        <span>题目解析</span>
+                    </div>
+                    <div class="mark-content">
+                        <p>系统抽样的分段间隔为500/50=10,在随机抽样中，首次抽到003号，以后每隔10个 号抽到一个人，
+                            则分别是003、015、027、039构成以3为首项，10为公差的等差 数列，故可分别求出在001到200中有20人，
+                            在201至355号中共有16人，则356到 500中有14人。</p>
+                    </div>
+                </div>
+                <div class="mark-list">
+                    <div class="mark-topic">
+                        <i class="icon-icon_source"></i>
+                        <span>题目来源</span>
+                    </div>
+                    <div class="mark-content mark-source">
+                        <a href="#">高考真题</a>
+                        <a href="#">2014年</a>
+                        <a href="#">全国1卷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="mark-right">
+                    <div class="mark-right-title">
+                        <h2><i class="icon-icon_tab"></i>题目打标</h2>
+                    </div>
+                    <div class="mark-right-label">
+                        <div class="mark-topic">
+                            <i class="icon-icon_articletype"></i>
+                            <span>文章类型</span>
+                            <i class="icon-question"></i>
+                            <ul class="mark-rating">
+                                <li class="active"><a href="#">广告通知类</a></li>
+                                <li><a href="#">叙事类</a></li>
+                                <li><a href="#">说明议论类</a></li>
+                                <li><a href="#">对话类</a></li>
+                            </ul>
+                        </div>
+                        <div class="mark-topic">
+                            <i class="icon-icon_articlelength"></i>
+                            <span>文章篇幅</span>
+                            <i class="icon-question"></i>
+                            <ul class="mark-rating">
+                                <li class="active"><a href="#">280-</a></li>
+                                <li><a href="#">280~310</a></li>
+                                <li><a href="#">310~370</a></li>
+                                <li><a href="#">370+</a></li>
+                            </ul>
+                        </div>
+                        <div class="mark-topic">
+                            <i class="icon-icon_match"></i>
+                            <span>信息匹配</span>
+                            <i class="icon-question"></i>
+                            <ul class="mark-rating">
+                                <li class="active"><a href="#">七选五</a></li>
+                                <li><a href="#">六选四</a></li>
+                                <li><a href="#">五选四</a></li>
+                                <li><a href="#">其他</a></li>
+                            </ul>
+                        </div>
+                        <div class="mark-data-type">
+                            <div class="mark-topic">
+                                <i class="icon-icon_knowledge_point"></i>
+                                <span>知识点标签</span>
+                                <ul class="mark-rating" id="marking-section">
+                                    <li class="active"><a href="#"><span class="marking-section-txt">2-1</span><span class="sign"><i class="icon-exclamation_mark narrow"></i></span></a></li>
+                                    <li><a href="#"><span class="marking-section-txt">2-2</span><span class="sign"><i class="icon-check_mark narrow"></i></span></a></li>
+                                    <li><a href="#"><span class="marking-section-txt">2-3</span><span class="sign"><i class="icon-check_mark narrow"></i></span></a></li>
+                                    <li><a href="#"><span class="marking-section-txt">2-4</span><span class="sign"><i class="icon-exclamation_mark narrow"></i></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="mark-chapter">
+                                <ul class="mark-chapter-list">
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+                                    <li><a href="javascript:;">第一章 集合与常用逻辑用语</a></li>
+
+                                </ul>
+                                <ul class="mark-node-list">
+                                    <li><a href="javascript:;" class="marking-check"><i class="icon-check"></i>知识标签树</a></li>
+                                    <li><a href="javascript:;" class="marking-check"><i class="icon-check"></i>知识标签树</a></li>
+                                    <li><a href="javascript:;" class="marking-check"><i class="icon-check"></i>知识标签树</a></li>
+                                </ul>
+                            </div>
+                            <div class="mark-topic">
+                                <i class="icon-icon_sel"></i>
+                                <span>已选知识点</span>
+                            </div>
+                            <div class="module-group">
+                                <ul class="mark-group-data">
+                                    <li>
+                                        <span class="mark-group-num">2-1</span>
+                                        <span class="mark-group-txt">系统抽样的理解和应用</span>
+                                        <i class="icon-close"></i>
+                                    </li>
+                                    <li>
+                                        <span class="mark-group-num">2-2</span>
+                                        <span class="mark-group-txt">系统抽样定义</span>
+                                        <i class="icon-close"></i>
+                                    </li>
+                                    <li>
+                                        <span class="mark-group-num">2-3</span>
+                                        <span class="mark-group-txt">系统抽样的操作过程</span>
+                                        <i class="icon-close"></i>
+                                    </li>
+                                    <li>
+                                        <span class="mark-group-num">2-3</span>
+                                        <span class="mark-group-txt">系统抽样的操作过程</span>
+                                        <i class="icon-close"></i>
+                                    </li>
+                                    <li>
+                                        <span class="mark-group-num">2-3</span>
+                                        <span class="mark-group-txt">系统抽样的操作过程</span>
+                                        <i class="icon-close"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mark-save">
+        <button class="save-back">保存&返回</button>
+        <button class="save-next">保存&下一题</button>
+    </div>
+</body>
+</html>

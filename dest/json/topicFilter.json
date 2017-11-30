@@ -1,0 +1,101 @@
+{
+  "count": 0,
+  "partition": [
+    {
+      "summations": {
+        "summations": [
+          {
+            "count": 3,
+            "title": "选择",
+            "code": 1,
+            "name": "select"
+          },
+          {
+            "count": 2,
+            "title": "填空",
+            "code": 2,
+            "name": "fillin"
+          },
+          {
+            "count": 10,
+            "title": "解答",
+            "code": 3,
+            "name": "writeout"
+          },
+          {
+            "count": 11,
+            "title": "作文",
+            "code": 4,
+            "name": "compose"
+          }
+        ],
+        "count": 0
+      },
+      "by": "QuestionResponseFormatKind"
+    },
+    {
+      "summations": {
+        "summations": [
+          {
+            "count": 0,
+            "title": "困难",
+            "code": 5,
+            "name": "hardest"
+          },
+          {
+            "count": 0,
+            "title": "较难",
+            "code": 4,
+            "name": "hard"
+          },
+          {
+            "count": 0,
+            "title": "中",
+            "code": 3,
+            "name": "middle"
+          },
+          {
+            "count": 0,
+            "title": "较易",
+            "code": 2,
+            "name": "easy"
+          },
+          {
+            "count": 0,
+            "title": "容易",
+            "code": 1,
+            "name": "easiest"
+          }
+        ],
+        "count": 0
+      },
+      "by": "QuestionDifficultyKind"
+    },
+    {
+      "summations": {
+        "summations": [
+          {
+            "count": 0,
+            "title": "高考真题",
+            "code": 1,
+            "name": "FromPast"
+          },
+          {
+            "count": 0,
+            "title": "同步练习",
+            "code": 2,
+            "name": "FromExercise"
+          },
+          {
+            "count": 0,
+            "title": "复习模拟",
+            "code": 3,
+            "name": "FromSimulation"
+          }
+        ],
+        "count": 0
+      },
+      "by": "QuestionSourceKind"
+    }
+  ]
+}

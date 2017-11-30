@@ -1,0 +1,10 @@
+{
+"role": [
+  {"title":"资源库管理员","name":"zyk"},
+  {"title":"资源库录题员","name":"zyk_lt"},
+  {"title":"资源库打标员","name":"zyk_db"},
+  {"title":"资源库负责人","name":"zuk_fz"},
+  {"title":"学科负责人","name":"xk_fz"},
+  {"title":"校本库打标员","name":"xbk_bd"}
+]
+}

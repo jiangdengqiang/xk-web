@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../templates/layouts/head.html" %}
+    <title>打标 & 推题</title>
+</head>
+    <!--顶部-->
+    <header id="header">
+        <div class="container">
+            <a href="./" class="logo">
+                <img src="../images/logo.png" title="原石教育"/>
+            </a>
+            <ul class="top_nav">
+                <li>
+                    <a href="javascript:;" class="active" v-if="userName=='xk_admin'|| userName=='xk_subadmin'">资源库管理</a>
+                    <a href="javascript:;" class="active" v-else>题目管理</a>
+                    <div class="submenu" v-if="userMenu">
+                        <ul>
+                            <li><a href="#">题目管理</a></li>
+                            <li><a href="./count.html">资源库统计</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li  v-if="userName=='xk_admin'|| userName=='xk_subadmin'"><a href="javascript:;">校本库管理</a></li>
+                <li v-if="userMenu"><a href="./user_manage.html">用户权限管理</a></li>
+                <li><a href="javascript:;">个人设置</a></li>
+            </ul>
+            <div class="vip_info" v-bind:class="userName">
+                <div class="module-vip">
+                    <span class="vip_level" v-text="userRole.description"></span>
+                    <span class="vip-man" v-text="userRole.username"></span>
+                </div>
+                <div class="userImg">
+                    <a href="#">
+                        <img src="../images/man.png"/>
+                    </a>
+                    <div class="submenu">
+                        <ul>
+                            <li><a href="../login/login.html" @click="clearLocalStorage()">撤销用户</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--主体-->
+    <section class="container main" id="moduleSubject">
+        <div class="menu-top">
+            <div class="menu-crumbs">
+                <a href="javascript:;">考试管理><span>试卷&答题卡管理</span></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 main-left">
+                <div class="row">
+                    <div class="form-select col-md-3">
+                        <select class="selectpicker select_list" id="subject" data-size="10">
+                            <option v-for="subject in subjectList" :value="subject.name" v-text="subject.title"></option>
+                        </select>
+                    </div>
+                    <div class="form-select col-md-9">
+                        <select id="book" class="selectpicker select_list" data-size="10">
+                            <option v-for="book in bookList" v-text="book.title" :value="book._id" v-bind:data-name="book.name"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="module-accordion" v-if="ishow">
+                    <div class="module-list" v-for="chapter in chapterList" v-bind:data-name="chapter.name">
+                        <div class="module-list-one">
+                            <i class="icon-folder"></i>
+                            <span class="accordion-dec" v-text="chapter.title"></span>
+                            <span v-if="typeof(numCount[chapter.name])==='undefined'">
+                                (<span class="chapter txt-waring" v-text="0"></span>/
+                                <span class="chapter_ok txt-waring" v-text="0"></span>/
+                                <span class="chapter_all" v-text="0"></span>)
+                            </span>
+                            <span v-else>(
+                                <span class="chapter txt-waring" v-html="decCount[0].count"></span>/
+                                <span class="chapter_ok txt-waring" v-html="decCount[1].count"></span>/
+                                <span class="chapter_all" v-html="decCount[2].count"></span>)</span>
+                            </span>
+                            <i class="icon-arrow-up"></i>
+                        </div>
+                        <ul class="module-list-two">
+                            <li v-for="chapterSon in chapter.son" v-bind:data-id="chapterSon._id" @click="chapterEvent($event)">
+                                <i class="icon-file"></i>
+                                <span class="accordion-two-dec" v-text="chapterSon.title"></span>
+                                <span>(<span class="chapter-two">26</span>/<span class="chapter-two-ok">26</span>/<span class="chapter-two-all">26</span>)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-en-accordion" v-else>
+                    <div class="module-list" v-for="chapter in chapterList" v-bind:data-name="chapter.name" @click="chapterEn($event)">
+                        <div class="module-list-one">
+                            <i class="icon-folder"></i>
+                            <span class="accordion-dec" v-text="chapter.title"></span>
+                            <span v-if="typeof(numCount[chapter.name])==='undefined'">
+                                (<span class="chapter txt-waring" v-text="0"></span>/
+                                <span class="chapter_ok txt-waring" v-text="0"></span>/
+                                <span class="chapter_all" v-text="0"></span>)
+                            </span>
+                            <span v-else>(
+                                <span class="chapter txt-waring" v-html="decCount[0].count"></span>/
+                                <span class="chapter_ok txt-waring" v-html="decCount[1].count"></span>/
+                                <span class="chapter_all" v-html="decCount[2].count"></span>)</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="main-right">
+                    <div class="module-marking">
+                        <ul class="marking-list">
+                            <li><a :href="'../entry/Entry.html?count='+isEmpty">题目录入</a></li>
+                            <li><a href="../check/batchCheck.html">批量审核</a></li>
+                            <li><a href="../check/batchMove.html">批量移动</a></li>
+                        </ul>
+                        <a href="javascript:;" class="marking-check" @click="auditPass($event)"><i class="icon-check-no"></i>显示审核过的题目</a>
+                    </div>
+                    <div class="module-marking-filter module-marking-en" v-if="localData.subject_en=='english'">
+                        <ul class="marking-type" v-for="topicFilterEns in topicFilterEn">
+                            <li v-for="filterEn in topicFilterEns.type.literal" :data-name="filterEn.name" @click="topicShow(filterEn.name,$event)">
+                                <a href="javascript:;">
+                                    <span v-text="filterEn.title"></span>
+                                    <span class="marking-num"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-marking-filter" v-else>
+                        <ul class="marking-type">
+                            <li v-for="(topicFilter1,index1) in topicFilterList1"
+                                v-on:click="topicShow('responseFormat',topicFilter1.name,$event)"
+                                :data-name="topicFilter1.name">
+                                <a href="javascript:;">
+                                    <span v-text="topicFilter1.title"></span>
+                                    <span class="marking-num" v-text="topicFilter1.count"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="marking-style">
+                            <li v-for="(topicFilter2,index2) in topicFilterList2"
+                                v-on:click="topicShow(topicFilter2.name,$event)"
+                                :data-name="topicFilter2.name">
+                                <a href="javascript:;">
+                                    <span v-text="topicFilter2.title"></span>
+                                    <span class="marking-num" v-text="topicFilter2.count"></span>
+                                </a>
+                            </li>
+                            <li @click="topicShow(null)">
+                                <a href="javascript:;">
+                                    <span>未知</span>
+                                    <span class="marking-num">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="marking-level">
+                            <li v-for="(topicFilter3,index3) in topicFilterList3"
+                                v-on:click="topicShow(topicFilter3.name,$event)"
+                                :data-name="topicFilter3.name">
+                                <a href="javascript:;">
+                                    <span v-text="topicFilter3.title"></span>
+                                    <span class="marking-num" v-text="topicFilter3.count"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-theme">
+                        <div class="scroll-bar" id="topic-data-list" v-if="isEmpty>0">
+                            <div class="theme-list" v-for="(topicDatas,index) in topicData">
+                                <ul class="theme-tip">
+                                    <li><span class="theme-num" v-text="index+1"></span></li>
+                                    <li class="theme-option"><a :href="'../entry/Entry.html?id='+topicDatas._id+'&num='+(index+1)+'&edit=true'">编辑</a></li>
+                                    <li class="theme-option looking"><a href="javascript:;">浏览</a></li>
+                                    <li class="theme-option"><a href="javascript:;" class="btn-delete" :data-id="topicDatas._id" @click="deleteTopic($event)">删除</a></li>
+                                </ul>
+                                <ul class="theme-status">
+                                    <li v-if="topicDatas.statusOfCheck=='open'"><i></i><span>未审核</span></li>
+                                    <li v-else class="finish"><i class="icon-check_mark"></i><span>已审核</span></li>
+                                    <li v-if="topicDatas.difficulty==undefined"><i></i><span>未打标</span></li>
+                                    <li class="finish" v-else><i class="icon-check_mark"></i><span>已打标</span></li>
+                                    <li><a :href="'../marking/marking.html?'+'son_id='+topicDatas._id+'&num='+(index+1)" class="ok">打标</a></li>
+                                </ul>
+                                <div class="theme-content">
+                                   <div class="theme-data" v-html="topicDatas.contOfQuery" :data-id="topicDatas._id"></div>
+                                    <div class="result-msg">
+                                        <span class="result-title">答案:</span>
+                                        <span v-html="topicDatas.contOfKey" v-if="topicDatas.contOfKey!=''"></span>
+                                        <span v-else v-for="(moreResult,indexs) in topicDatas.fieldOfSon.contOfKey" v-html="(indexs+1)+':'+moreResult+';\t'"></span>
+                                    </div>
+                                    <div class="result-msg analyze">
+                                        <span class="result-title">解析:</span>
+                                        <div class="result-analyze" v-html="topicDatas.contOfAnalysis"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empty" v-else>
+                            <img src="../images/book.png">
+                            <p>还没有题目，快去录题把~</p>
+                        </div>
+                    </div>
+                    <page></page>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--    <div class="beta-bg"></div>
+    <div class="beta-layer">
+        <div class="beta-top">
+            <span class="beta-title">提示</span>
+            <span class="beta-close-btn">×</span>
+        </div>
+        <div class="beta-layer-content">
+            <i class="icon-warning"></i>
+            <span>确定要删除此题么？</span>
+        </div>
+        <div class="layer-btn">
+            <a href="javascript:;" class="sureBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+        </div>
+    </div>-->
+<script type="text/x-template" id="page">
+    <div class="page">
+        <div class="result">
+        当前结果:<span class="result-num">26</span>条记录
+        </div>
+        <div class="showNum">
+        <span>每页显示</span>
+        <div class="show-input">
+        <input type="num" value="4"/>
+        <span class="page-icon">
+        <span class="borderB"><i class="icon-page-up"></i></span>
+    <span><i class="icon-page-down"></i></span>
+    </span>
+    </div>
+    <span>条</span>
+    </div>
+    <ul class="pageNum">
+        <li @click="goto(1)"><a href="javascript:;" class="first">首页</a></li>
+    <li  v-show="current != 1" @click="current-- && goto(current)"><a href="javascript:;" class="prev"><img src="../images/icon/prev.png"/></a></li>
+    <li v-for="index in pages" @click="goto(index)" :class="{'active':current == index}" :key="index"><a href="javascript:;" v-text="index"></a></li>
+    <li v-show="allpage != current && allpage != 0 " @click="current++ && goto(current++)"><a href="javascript:;" class="next"><img src="../images/icon/next.png"/></a></li>
+    <li @click="goto(allpage)"><a href="javascript:;" class="last">尾页</a></li>
+    </ul>
+    </div>
+</script>
+</body>
+{% include "../templates/partials/js.html" %}
+<script src="../js/page.js"></script>
+<script src="../js/backstage-data.js"></script>
+<script src="../js/header.js"></script>
+<script type="text/javascript" async  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</html>

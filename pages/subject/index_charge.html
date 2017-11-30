@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../templates/layouts/head.html" %}
+    <title>打标 & 推题</title>
+</head>
+<body>
+    <!--顶部-->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="../images/logo.png" title="原石教育"/>
+            </a>
+            <nav class="top_nav">
+                <a href="javascript:;" class="active">资源库管理</a>
+                <a href="javascript:;">校本库管理</a>
+                <a href="javascript:;">系统设置</a>
+            </nav>
+            <div class="vip_info">
+                <div class="module-vip">
+                    <span class="vip_level">学科负责人</span>
+                    <span class="vip_level ">数学</span>v-subject
+                    <span class="vip-man">赵老师</span>
+                </div>
+                <a href="#"><img src="../images/man.png"/></a>
+            </div>
+        </div>
+    </header>
+    <!--主体-->
+    <section class="container main">
+        <div class="row">
+            <div class="col-md-4 main-left">
+                <div class="row">
+                    <div class="form-select col-md-3">
+                        <select class="selectpicker">
+                            <option>数学</option>
+                            <option>英语</option>
+                        </select>
+                    </div>
+                    <div class="form-select col-md-9">
+                        <select class="selectpicker">
+                            <option>必修1 (1212/1212/1231)</option>
+                            <option>必修2 (1232/1233/1234)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="module-accordion">
+                    <div class="module-list">
+                        <div class="module-list-one">
+                            <i class="icon-folder"></i>
+                            <span class="accordion-dec">第一章 集合与函数概念 (I)</span>
+                            <span>(<span class="chapter">365</span>/<span class="chapter_ok">365</span>/<span class="chapter_all">365</span>)</span>
+                            <i class="icon-arrow-up"></i>
+                        </div>
+                        <ul class="module-list-two">
+                            <li>
+                                <i class="icon-file"></i>
+                                <span class="accordion-two-dec">2.1指数函数</span>
+                                <span>(<span class="chapter-two">26</span>/<span class="chapter-two-ok">26</span><span class="chapter-two-all">26</span>)</span>
+                            </li>
+                            <li>
+                                <i class="icon-file"></i>
+                                <span class="accordion-two-dec">2.2对数函数</span>
+                                <span>(<span class="chapter-two">26</span>/<span class="chapter-two-ok">26</span><span class="chapter-two-all">26</span>)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-list">
+                        <div class="module-list-one">
+                            <i class="icon-folder"></i>
+                            <span class="accordion-dec">第一章 集合与函数概念 (I)</span>
+                            <span>(<span class="chapter">365</span>/<span class="chapter_ok">365</span>/<span class="chapter_all">365</span>)</span>
+                            <i class="icon-arrow-up"></i>
+                        </div>
+                        <ul class="module-list-two">
+                            <li>
+                                <i class="icon-file"></i>
+                                <span class="accordion-two-dec">2.1指数函数</span>
+                                <span>(<span class="chapter-two">26</span>/<span class="chapter-two-ok">26</span><span class="chapter-two-all">26</span>)</span>
+                            </li>
+                            <li>
+                                <i class="icon-file"></i>
+                                <span class="accordion-two-dec">2.2对数函数</span>
+                                <span>(<span class="chapter-two">26</span>/<span class="chapter-two-ok">26</span><span class="chapter-two-all">26</span>)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-list">
+                        <div class="module-list-one">
+                            <i class="icon-folder"></i>
+                            <span class="accordion-dec">第一章 集合与函数概念 (I)</span>
+                            <span>(<span class="chapter">365</span>/<span class="chapter_ok">365</span>/<span class="chapter_all">365</span>)</span>
+                            <i class="icon-arrow-up"></i>
+                        </div>
+                        <ul class="module-list-two">
+                           <li>
+                               <i class="icon-file"></i>
+                               <span class="accordion-two-dec">2.1指数函数</span>
+                               <span>(<span class="chapter-two">26</span>/<span class="chapter-two-ok">26</span><span class="chapter-two-all">26</span>)</span>
+                           </li>
+                            <li>
+                                <i class="icon-file"></i>
+                                <span class="accordion-two-dec">2.2对数函数</span>
+                                <span>(<span class="chapter-two">26</span>/<span class="chapter-two-ok">26</span><span class="chapter-two-all">26</span>)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="main-right">
+                    <div class="module-marking">
+                        <ul class="marking-list">
+                            <li><a href="javascript:;">题目录入</a></li>
+                            <li><a href="javascript:;">批量审核</a></li>
+                            <li><a href="javascript:;">批量移动</a></li>
+                        </ul>
+                        <a href="javascript:;" class="marking-check"><i class="icon-check"></i>显示打标及审核过的题目</a>
+                    </div>
+                    <div class="module-marking-filter">
+                        <ul class="marking-type">
+                            <li class="active"><a href="javascript:;">选择<span class="marking-num">14</span></a></li>
+                            <li><a href="javascript:;">填空<span class="marking-num">6</span></a></li>
+                            <li><a href="javascript:;">解答<span class="marking-num">6</span></a></li>
+                        </ul>
+                        <ul class="marking-style">
+                            <li><a href="javascript:;">容易<span class="marking-num">14</span></a></li>
+                            <li><a href="javascript:;">中等<span class="marking-num">6</span></a></li>
+                            <li><a href="javascript:;">困难<span class="marking-num">6</span></a></li>
+                            <li><a href="javascript:;">未知<span class="marking-num">6</span></a></li>
+                        </ul>
+                        <ul class="marking-level">
+                            <li><a href="javascript:;">同步训练<span class="marking-num">14</span></a></li>
+                            <li><a href="javascript:;">复习模拟<span class="marking-num">6</span></a></li>
+                            <li><a href="javascript:;">高考真题<span class="marking-num">6</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="module-theme">
+                        <div class="theme-list">
+                            <ul class="theme-tip">
+                                <li><span class="theme-num">1</span></li>
+                                <li><a href="javascript:;">编辑</a></li>
+                                <li><a href="javascript:;">浏览</a></li>
+                                <li><a href="javascript:;" class="btn-delete">删除</a></li>
+                            </ul>
+                            <ul class="theme-status">
+                                <li class="finish"><i class="icon-check_mark"></i><span>已审核</span></li>
+                                <li class="finish"><i class="icon-check_mark"></i><span>已打标</span></li>
+                                <li><a href="#" class="ok">打标</a></li>
+                            </ul>
+                            <div class="theme-content">
+                               <span>这是个题目的字体样式</span>
+                            </div>
+                        </div>
+                        <div class="theme-list">
+                            <ul class="theme-tip">
+                                <li><span class="theme-num">2</span></li>
+                                <li class="hide"><a href="javascript:;">编辑</a></li>
+                                <li class="hide"><a href="javascript:;">浏览</a></li>
+                                <li class="hide"><a href="javascript:;">删除</a></li>
+                            </ul>
+                            <ul class="theme-status">
+                                <li><i></i><span>未审核</span></li>
+                                <li><i></i><span>未打标</span></li>
+                                <li><a href="#">打标</a></li>
+                            </ul>
+                            <div class="theme-content">
+                                <span>这是个题目的字体样式</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <div class="result">
+                            当前结果:<span class="result-num">26</span>条记录
+                        </div>
+                        <div class="showNum">
+                            <span>每页显示</span>
+                            <div class="show-input">
+                                <input type="num" value="4"/>
+                                <span class="page-icon">
+                                    <span class="borderB"><i class="icon-page-up"></i></span>
+                                    <span><i class="icon-page-down"></i></span>
+                                </span>
+                            </div>
+                            <span>条</span>
+                        </div>
+                        <ul class="pageNum">
+                            <li><a href="javascript:;" class="first">首页</a></li>
+                            <li><a href="javascript:;" class="prev"><img src="../images/icon/prev.png"/></a></li>
+                            <li><a href="javascript:;">1</a></li>
+                            <li><a href="javascript:;">2</a></li>
+                            <li><a href="javascript:;" class="next"><img src="../images/icon/next.png"/></a></li>
+                            <li><a href="javascript:;" class="last">尾页</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--<div class="beta-bg"></div>-->
+    <!--<div class="beta-layer">
+        <div class="beta-top">
+            <span class="beta-title">提示</span>
+            <span class="beta-close-btn">×</span>
+        </div>
+        <div class="beta-layer-content">
+            <i class="icon-warning"></i>
+            <span>确定要删除此题么？</span>
+        </div>
+        <div class="layer-btn">
+            <a href="javascript:;" class="sureBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+        </div>
+    </div>-->
+</body>
+{% include "../templates/partials/js.html" %}
+</html>

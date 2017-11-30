@@ -1,0 +1,21 @@
+upstream loadbalance{
+    server ldbhost:ldbport;
+}
+server {
+    listen       8000;
+    server_name  -;
+
+    location / {
+        #root   /home/stoneman/repo/newton/sculptor/questbank-web/dest;
+        root   /srv/www/xk-web/;
+        }
+    location /api {
+        proxy_set_header HOST ldbhost:ldbport;
+        proxy_pass   http://loadbalance;
+        }
+    location /upload {
+        proxy_set_header HOST ldbhost:ldbport;
+        proxy_pass   http://loadbalance;
+        }
+}
+

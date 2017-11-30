@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../templates/layouts/head.html" %}
+    <title>原石教育后台管理系统-登录</title>
+    <style type="text/css">
+        body{ background-color: #4DA1FF;}
+    </style>
+</head>
+<body>
+    <div class="login-page" id="login">
+        <div class="login-box">
+            <h2>欢迎来到原石教育后台管理系统</h2>
+            <div class="form-group">
+                <form  @submit.prevent="login">
+                    <label>账号:<input :value="username" type="text" placeholder="请输入您的用户名" class="username" v-model="username" required="required"/></label>
+                    <label>密码:<input :value="password" type="password" placeholder="请输入您的密码" class="password" v-model="password" required="required"/></label>
+                    <input type="submit" value="登录" id="login-sub"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="iframe-bg"></div>
+</body>
+{% include "../templates/partials/js.html" %}
+<script src="../js/vue-router.js"></script>
+<script src="../js/login.js"></script>
+</html>
